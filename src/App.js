@@ -1,23 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import axios from "axios";
+import { useState, useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Offer from "./pages/Offer";
+import Header from "./components/Header";
 
 function App() {
-  return (
+  const [data, setData] = useState();
+  const [isLoading, setIsloading] = useState(true);
+  useEffect(() => {
+    const fetchdata = async () => {
+      try {
+        const response = await axios.get(
+          "https://lereacteur-vinted-api.herokuapp.com/offers"
+        );
+        // console.log(response.data);
+        setData(response.data);
+        setIsloading(false);
+      } catch (error) {
+        console.log(error.response);
+      }
+    };
+    fetchdata();
+  }, []);
+
+  return isLoading ? (
+    <span>En cours de chargement...</span>
+  ) : (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* {console.log("this is", data)} */}
+      <Router>
+        <Header></Header>
+        <Routes>
+          <Route path="/" element={<Home data={data} />} />
+          <Route path="/offer" element={<Offer />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
