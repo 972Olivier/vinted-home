@@ -1,0 +1,58 @@
+form p {
+  font-size: 12px;
+  line-height: 10px;
+  color: #999999;
+}
+
+article {
+  width: 300px;
+  height: 490px;
+  border: black 2px solid;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+  margin: 0 auto;
+}
+h1 {
+  font-size: 24px;
+  line-height: 20px;
+}
+.newsletter {
+  display: flex;
+  align-items: center;
+}
+.newsletter > div {
+  display: flex;
+  justify-content: space-between;
+
+  border: 1px solid black;
+}
+.newsletter p {
+  font-size: 16px;
+  line-height: 13.3px;
+  color: #666666;
+  border: solid black 1px;
+}
+
+article input {
+  padding-left: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 95%;
+  font-size: 18px;
+  border: none;
+  color: #999999;
+}
+article button {
+  width: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+  height: 40px;
+  color: white;
+  background-color: #0ab1ba;
+  border-radius: 5px;
+  border: none;
+}
+.lineUnderInput {
+  border-bottom: solid 1px gray;
+}

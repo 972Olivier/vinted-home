@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import Hero from "../assets/img/Hero.jpg";
+import "./Home.css";
 
 const Home = ({ data }) => {
   // console.log(data.offers[6].owner.account.avatar.url);
@@ -10,13 +11,13 @@ const Home = ({ data }) => {
       </section>
       <section className="allOffer">
         {data.offers.map((element, index) => {
-          console.log(element);
+          // console.log(element._id);
           // créer la route vers offer http://localhost:3000/offer/:id
           // transmettre le param de l'id à Offer.
           // pour récupérer l'annonce dans Offer avec les éléments pour construire la page.
           return (
             // J'ai englobé la div du link pour renvoyer vers la page !!!!
-            <Link to="/offer">
+            <Link to={`/offer/${element._id}`}>
               <div key={index} className="containOffer">
                 <div className="avatarAndName">
                   <div>

@@ -1,0 +1,51 @@
+/*--------------------------Offer----------------*/
+.detailsOffer {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #ebedee;
+  /* border: solid 1px black; */
+  height: 85vh;
+}
+.boxOffer {
+  display: flex;
+  /* border: black 1px solid; */
+  width: 55vw;
+  justify-content: space-between;
+}
+.detailsOffer img {
+  width: 450px;
+  height: 600px;
+  object-fit: cover;
+}
+.descriptionOffer {
+  width: 400px;
+  height: 600px;
+  background-color: white;
+  padding: 35px;
+  box-sizing: border-box;
+}
+.elementDescription {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+.elementDescription p {
+  font-size: 14px;
+  line-height: 11.7px;
+}
+.last {
+  border-bottom: 1px solid grey;
+  padding-bottom: 30px;
+}
+.avatarLogo {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+.avatarLogo img {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}

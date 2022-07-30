@@ -1,0 +1,50 @@
+/*------------------main------------------------*/
+
+.hero img {
+  height: 435px;
+  width: 100%;
+  object-fit: cover;
+  margin-bottom: 50px;
+}
+
+/*------------under hero---------*/
+.allOffer {
+  display: flex;
+  width: 1235px;
+  flex-wrap: wrap;
+  margin: 15px auto;
+  border: solid 1px black;
+}
+.containOffer {
+  margin-right: 12px;
+  margin-bottom: 30px;
+  flex-direction: column;
+}
+.avatarAndName {
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+  margin-bottom: 10px;
+}
+.avatar {
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.pictureOffer img {
+  height: 369px;
+  width: 235px;
+  object-fit: cover;
+}
+.threeSpan {
+  display: flex;
+  flex-direction: column;
+}
+span {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 12px;
+  line-height: 10px;
+  color: #999999;
+}

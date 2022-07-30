@@ -1,9 +1,12 @@
 import logo from "../assets/img/logo.svg";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
     <header>
-      <img src={logo} alt="logo de vinted" />
+      <Link to="/">
+        <img src={logo} alt="logo de vinted" />
+      </Link>
       <div className="search">
         <input
           type="search"
@@ -13,7 +16,10 @@ const Header = () => {
         />
       </div>
       <div className="threeButton">
-        <button>S'inscrire</button>
+        <Link to="/signup">
+          {" "}
+          <button>S'inscrire</button>
+        </Link>
         <button>Se connecter</button>
         <button>Vends tes articles</button>
       </div>
