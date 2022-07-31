@@ -11,6 +11,8 @@ import Login from "./pages/Login";
 function App() {
   const [data, setData] = useState();
   const [isLoading, setIsloading] = useState(true);
+  const [userConnect, setUserConnect] = useState(false);
+
   useEffect(() => {
     const fetchdata = async () => {
       try {
@@ -33,13 +35,21 @@ function App() {
     <div className="App">
       {/* {console.log("this is", data)} */}
       <Router>
-        <Header></Header>
+        <Header userConnect={userConnect}></Header>
         <Routes>
           <Route path="/" element={<Home data={data} />} />
           <Route path="/offer" element={<Offer />} />
           <Route path="/offer/:id" element={<Offer />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/login" element={<Login />} />
+          <Route
+            path="/login"
+            element={
+              <Login
+                setUserConnect={setUserConnect}
+                userConnect={userConnect}
+              />
+            }
+          />
         </Routes>
       </Router>
     </div>

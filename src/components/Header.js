@@ -1,7 +1,8 @@
 import logo from "../assets/img/logo.svg";
 import { Link } from "react-router-dom";
 
-const Header = () => {
+const Header = ({ userConnect }) => {
+  console.log(userConnect);
   return (
     <header>
       <Link to="/">
@@ -16,12 +17,20 @@ const Header = () => {
         />
       </div>
       <div className="threeButton">
-        <Link to="/signup">
-          <button>S'inscrire</button>
-        </Link>
-        <Link to="/login">
-          <button>Se connecter</button>
-        </Link>
+        {userConnect === false && (
+          <Link to="/signup">
+            <button>S'inscrire</button>
+          </Link>
+        )}
+
+        {userConnect === false ? (
+          <Link to="/login">
+            <button>Se connecter</button>
+          </Link>
+        ) : (
+          <button>Se déconnecter</button>
+        )}
+
         <button>Vends tes articles</button>
       </div>
     </header>

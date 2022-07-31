@@ -3,11 +3,13 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import Cookies from "js-cookie";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-const Login = () => {
+const Login = ({ setUserConnect, userConnect }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   //   console.log(email, password);
+  const navigate = useNavigate();
 
   const handleEmailChange = (event) => {
     const value = event.target.value;
@@ -37,6 +39,8 @@ const Login = () => {
             );
             console.log(response.data);
             Cookies.set("token", response.data.token, { expires: 7 });
+            setUserConnect(true);
+            userConnect === true && navigate("/");
           } catch (error) {
             console.log(error.response);
           }
