@@ -17,10 +17,11 @@ const Header = () => {
       </div>
       <div className="threeButton">
         <Link to="/signup">
-          {" "}
           <button>S'inscrire</button>
         </Link>
-        <button>Se connecter</button>
+        <Link to="/login">
+          <button>Se connecter</button>
+        </Link>
         <button>Vends tes articles</button>
       </div>
     </header>

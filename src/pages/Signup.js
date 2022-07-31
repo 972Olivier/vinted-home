@@ -1,8 +1,8 @@
-import { useParams } from "react-router-dom";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Signup.css";
+import Cookies from "js-cookie";
 
 const Signup = () => {
   /*--state par input--*/
@@ -10,6 +10,7 @@ const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [newsletter, setnewsletter] = useState(false);
+  // const [data, setData] = useState("");
   /*---fonction par input pour récuperer leur value---*/
   const handleNameChange = (event) => {
     const value = event.target.value;
@@ -25,21 +26,65 @@ const Signup = () => {
   };
 
   /*--------récupérer les données lors du submit---------*/
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log(name, email, password, newsletter);
-  };
-  let objectUser = {
-    email: email,
-    username: name,
-    password: password,
-    newsletter: newsletter,
-  };
-  console.log(objectUser);
+  // let objectUser = {
+  //   email: email,
+  //   username: name,
+  //   password: password,
+  //   newsletter: newsletter,
+  // };
+  // const fetchData = async () => {
+  //   try {
+  //     const response = await axios.post(
+  //       "https://lereacteur-vinted-api.herokuapp.com/user/signup",
+  //       {
+  //         email: email,
+  //         username: name,
+  //         password: password,
+  //         newsletter: newsletter,
+  //       }
+  //     );
+  //     console.log(response.data);
+  //     setData(response.data);
+  //   } catch (error) {
+  //     console.log(error.response); // contrairement au error.message d'express
+  //   }
+  // };
+
+  // const token = data.token;
+  // // console.log(token);
+  // Cookies.set("token", token, { expires: 7 });
+
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
+  //   fetchData();
+
+  //   // console.log(name, email, password, newsletter);
+  // };
+  const token = Cookies.get("token");
+  console.log(token);
   return (
     <article>
       <h1>S'inscrire</h1>
-      <form onSubmit={handleSubmit}>
+      <form
+        onSubmit={async (ev) => {
+          try {
+            ev.preventDefault();
+            const response = await axios.post(
+              "https://lereacteur-vinted-api.herokuapp.com/user/signup",
+              {
+                email: email,
+                username: name,
+                password: password,
+                newsletter: newsletter,
+              }
+            );
+            Cookies.set("token", response.data.token, { expires: 7 });
+            // setData(response.data);
+          } catch (error) {
+            console.log(error.response); // contrairement au error.message d'express
+          }
+        }}
+      >
         <div className="lineUnderInput">
           <input
             type="text"
@@ -90,7 +135,7 @@ const Signup = () => {
         </p>
         <button>S'inscrire</button>
         <div>
-          <Link to="login">
+          <Link to="/login">
             <p>Tu as déjà un compte ? Connecte-toi !</p>
           </Link>
         </div>

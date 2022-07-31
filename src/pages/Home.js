@@ -3,7 +3,7 @@ import Hero from "../assets/img/Hero.jpg";
 import "./Home.css";
 
 const Home = ({ data }) => {
-  // console.log(data.offers[6].owner.account.avatar.url);
+  // console.log(data);
   return (
     <main>
       <section className="hero">
@@ -11,6 +11,7 @@ const Home = ({ data }) => {
       </section>
       <section className="allOffer">
         {data.offers.map((element, index) => {
+          console.log(element.owner);
           // console.log(element._id);
           // créer la route vers offer http://localhost:3000/offer/:id
           // transmettre le param de l'id à Offer.
@@ -21,13 +22,13 @@ const Home = ({ data }) => {
               <div key={index} className="containOffer">
                 <div className="avatarAndName">
                   <div>
-                    {element.owner && (
+                    {/* {element.owner && (
                       <img
                         className="avatar"
                         src={element.owner.account.avatar.url}
                         alt="avatar"
                       />
-                    )}
+                    )} */}
                   </div>
                   <div>
                     <span>
@@ -38,7 +39,7 @@ const Home = ({ data }) => {
 
                 <div className="pictureOffer" key={index}>
                   <img
-                    src={element.product_pictures[0].secure_url}
+                    // src={element.product_pictures[0].secure_url}
                     alt="vetement"
                   />
                 </div>

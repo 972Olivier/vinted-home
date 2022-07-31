@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import Offer from "./pages/Offer";
 import Header from "./components/Header";
 import Signup from "./pages/Signup";
+import Login from "./pages/Login";
 
 function App() {
   const [data, setData] = useState();
@@ -38,6 +39,7 @@ function App() {
           <Route path="/offer" element={<Offer />} />
           <Route path="/offer/:id" element={<Offer />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </Router>
     </div>

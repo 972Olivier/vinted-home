@@ -23,7 +23,7 @@ const Offer = () => {
     };
     fetchdata();
   }, [id]);
-  console.log(data);
+  // console.log(data);
   return isLoading ? (
     <span>En cours de chargement...</span>
   ) : (
