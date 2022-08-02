@@ -13,12 +13,17 @@ const Header = ({ userConnect, setUserConnect }) => {
         <img src={logo} alt="logo de vinted" />
       </Link>
       <div className="search">
-        <input type="search" name="" placeholder="Recherche des articles" />
+        <input
+          className="inputSearch"
+          type="search"
+          name=""
+          placeholder="Recherche des articles"
+        />
       </div>
       <div className="threeButton">
         {userConnect === false && (
           <Link to="/signup">
-            <button>S'inscrire</button>
+            <button className="ButtonlogIn">S'inscrire</button>
           </Link>
         )}
 
@@ -31,8 +36,7 @@ const Header = ({ userConnect, setUserConnect }) => {
             onClick={(event) => {
               event.preventDefault();
               // alert("c'est cliké");
-              // const token = Cookies.get("token");
-              // console.log("this is", token);
+
               const falsy = false;
               setUserConnect(falsy);
               Cookies.remove("MyToken");
@@ -42,7 +46,7 @@ const Header = ({ userConnect, setUserConnect }) => {
           </button>
         )}
 
-        <button>Vends tes articles</button>
+        <button className="sold">Vends tes articles</button>
       </div>
     </header>
   );

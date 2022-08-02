@@ -13,7 +13,7 @@
   width: 1235px;
   flex-wrap: wrap;
   margin: 15px auto;
-  border: solid 1px black;
+  /* border: solid 1px black; */
 }
 .containOffer {
   margin-right: 12px;
@@ -47,4 +47,7 @@ span {
   font-size: 12px;
   line-height: 10px;
   color: #999999;
+}
+a {
+  text-decoration: none;
 }

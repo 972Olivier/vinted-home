@@ -4,3 +4,34 @@ header {
   justify-content: space-around;
   height: 15vh;
 }
+.threeButton {
+  display: flex;
+
+  /* border: black 1px solid; */
+  width: 455px;
+}
+.inputSearch {
+  width: 630px;
+  height: 40px;
+  background-color: rgb(249, 244, 244);
+  border: none;
+  padding-left: 30px;
+  border-radius: 5px;
+}
+
+button {
+  border-color: #48b1ba;
+  background-color: white;
+  color: #48b1ba;
+  border-radius: 5px;
+  width: 125px;
+  height: 30px;
+}
+.ButtonlogIn {
+  margin-right: 20px;
+}
+.sold {
+  background-color: #48b1ba;
+  color: white;
+  margin-left: 60px;
+}
