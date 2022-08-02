@@ -5,7 +5,8 @@ import Cookies from "js-cookie";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const Login = ({ setUserConnect, userConnect }) => {
+const Login = ({ setUserConnect }) => {
+  const [token, setToken] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   //   console.log(email, password);
@@ -37,10 +38,13 @@ const Login = ({ setUserConnect, userConnect }) => {
                 password: password,
               }
             );
-            console.log(response.data);
-            Cookies.set("token", response.data.token, { expires: 7 });
+            // console.log(response.data);
+            let recupToken = response.data.token;
+            setToken(recupToken);
+            console.log(token);
+            Cookies.set("MyToken", recupToken, { expires: 5 });
             setUserConnect(true);
-            userConnect === true && navigate("/");
+            navigate("/");
           } catch (error) {
             console.log(error.response);
           }

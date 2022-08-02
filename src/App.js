@@ -35,7 +35,10 @@ function App() {
     <div className="App">
       {/* {console.log("this is", data)} */}
       <Router>
-        <Header userConnect={userConnect}></Header>
+        <Header
+          userConnect={userConnect}
+          setUserConnect={setUserConnect}
+        ></Header>
         <Routes>
           <Route path="/" element={<Home data={data} />} />
           <Route path="/offer" element={<Offer />} />

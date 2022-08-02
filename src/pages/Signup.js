@@ -10,6 +10,7 @@ const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [newsletter, setnewsletter] = useState(false);
+  const [token, setToken] = useState("");
   // const [data, setData] = useState("");
   /*---fonction par input pour récuperer leur value---*/
   const handleNameChange = (event) => {
@@ -26,42 +27,7 @@ const Signup = () => {
   };
 
   /*--------récupérer les données lors du submit---------*/
-  // let objectUser = {
-  //   email: email,
-  //   username: name,
-  //   password: password,
-  //   newsletter: newsletter,
-  // };
-  // const fetchData = async () => {
-  //   try {
-  //     const response = await axios.post(
-  //       "https://lereacteur-vinted-api.herokuapp.com/user/signup",
-  //       {
-  //         email: email,
-  //         username: name,
-  //         password: password,
-  //         newsletter: newsletter,
-  //       }
-  //     );
-  //     console.log(response.data);
-  //     setData(response.data);
-  //   } catch (error) {
-  //     console.log(error.response); // contrairement au error.message d'express
-  //   }
-  // };
 
-  // const token = data.token;
-  // // console.log(token);
-  // Cookies.set("token", token, { expires: 7 });
-
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   fetchData();
-
-  //   // console.log(name, email, password, newsletter);
-  // };
-  const token = Cookies.get("token");
-  console.log(token);
   return (
     <article>
       <h1>S'inscrire</h1>
@@ -78,7 +44,10 @@ const Signup = () => {
                 newsletter: newsletter,
               }
             );
-            Cookies.set("token", response.data.token, { expires: 7 });
+            let recupToken = response.data.token;
+            setToken(recupToken);
+            console.log(token);
+            Cookies.set("token", recupToken, { expires: 4 });
             // setData(response.data);
           } catch (error) {
             console.log(error.response); // contrairement au error.message d'express

@@ -22,13 +22,13 @@ const Home = ({ data }) => {
               <div key={index} className="containOffer">
                 <div className="avatarAndName">
                   <div>
-                    {/* {element.owner && (
+                    {element.owner.account.avatar && (
                       <img
                         className="avatar"
-                        src={element.owner.account.avatar.url}
+                        src={element.owner.account.avatar.secure_url}
                         alt="avatar"
                       />
-                    )} */}
+                    )}
                   </div>
                   <div>
                     <span>
@@ -38,10 +38,12 @@ const Home = ({ data }) => {
                 </div>
 
                 <div className="pictureOffer" key={index}>
-                  <img
-                    // src={element.product_pictures[0].secure_url}
-                    alt="vetement"
-                  />
+                  {element.product_image && (
+                    <img
+                      src={element.product_image.secure_url}
+                      alt="vetement"
+                    />
+                  )}
                 </div>
                 <div className="threeSpan">
                   <span>{element.product_price} €</span>
