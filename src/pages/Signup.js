@@ -1,10 +1,11 @@
 import axios from "axios";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Signup.css";
 import Cookies from "js-cookie";
 
 const Signup = () => {
+  const navigate = useNavigate();
   /*--state par input--*/
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -48,7 +49,7 @@ const Signup = () => {
             setToken(recupToken);
             console.log(token);
             Cookies.set("token", recupToken, { expires: 4 });
-            // setData(response.data);
+            navigate("/");
           } catch (error) {
             console.log(error.response); // contrairement au error.message d'express
           }
@@ -92,7 +93,6 @@ const Signup = () => {
               type="checkbox"
               name="newsletter"
               value={newsletter}
-              //   onChange={handleNewsletterChange}
             />
           </div>
           <p>S'inscrire à notre newsletter</p>
