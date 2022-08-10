@@ -13,8 +13,8 @@ function App() {
   const [data, setData] = useState("");
   const [isLoading, setIsloading] = useState(true);
   const [userConnect, setUserConnect] = useState(false);
-  const [priceMin, setPriceMin] = useState(null);
-  const [priceMax, setPriceMax] = useState(null);
+  const [priceMin, setPriceMin] = useState("");
+  const [priceMax, setPriceMax] = useState("");
   const [sort, setSort] = useState("price-asc");
   const [title, setTitle] = useState("");
 

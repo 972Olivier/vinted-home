@@ -1,6 +1,7 @@
 import logo from "../assets/img/logo.svg";
 import { Link } from "react-router-dom";
 import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
 
 const Header = ({
   userConnect,
@@ -16,7 +17,7 @@ const Header = ({
 }) => {
   // console.log(userConnect);
   let article = "";
-
+  const navigate = useNavigate();
   return (
     <header>
       <Link to="/">
@@ -110,7 +111,16 @@ const Header = ({
           </button>
         )}
 
-        <button className="sold">Vends tes articles</button>
+        <button
+          className="sold"
+          onClick={() => {
+            let token = Cookies.get("MyToken");
+            // console.log(token);
+            token ? navigate("/publish") : navigate("/login");
+          }}
+        >
+          Vends tes articles
+        </button>
       </div>
     </header>
   );
