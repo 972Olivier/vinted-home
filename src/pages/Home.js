@@ -11,7 +11,7 @@ const Home = ({ data }) => {
       </section>
       <section className="allOffer">
         {data.offers.map((element, index) => {
-          console.log(element.owner);
+          // console.log(element.owner);
           // console.log(element._id);
           // créer la route vers offer http://localhost:3000/offer/:id
           // transmettre le param de l'id à Offer.

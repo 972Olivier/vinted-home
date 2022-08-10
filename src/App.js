@@ -7,6 +7,7 @@ import Offer from "./pages/Offer";
 import Header from "./components/Header";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
+import Publish from "./pages/Publish";
 
 function App() {
   const [data, setData] = useState("");
@@ -78,6 +79,7 @@ function App() {
               />
             }
           />
+          <Route path="/publish" element={<Publish />} />
         </Routes>
       </Router>
     </div>

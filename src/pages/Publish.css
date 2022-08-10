@@ -1,0 +1,39 @@
+.publishMain {
+  background-color: #ebedee;
+}
+.divMain {
+  width: 1284px;
+  margin: 15px auto;
+}
+.titleH2 {
+  /* border: 1px solid black; */
+  padding-top: 50px;
+  padding-bottom: 30px;
+}
+h2 {
+  font-size: 24px;
+  line-height: 20px;
+}
+
+.publish section {
+  margin-bottom: 20px;
+  background-color: white;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+}
+.publish input {
+  width: 618px;
+  height: 25px;
+  border: none;
+  border-bottom: gray solid 0.5px;
+}
+.publish div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 75px;
+  border-bottom: solid 1px gray;
+  padding: 20px;
+  box-sizing: border-box;
+}
