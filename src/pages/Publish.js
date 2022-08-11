@@ -1,6 +1,8 @@
 import "./Publish.css";
 import { useState } from "react";
 import axios from "axios";
+import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
 
 const Publish = () => {
   const [file, setFile] = useState("");
@@ -11,6 +13,9 @@ const Publish = () => {
   const [condition, setCondition] = useState("");
   const [city, setCity] = useState("");
   const [brand, setBrand] = useState("");
+  const [size, setSize] = useState("");
+  const [color, setColor] = useState("");
+  const navigate = useNavigate();
 
   console.log(brand);
   console.log(title);
@@ -18,13 +23,51 @@ const Publish = () => {
   console.log(condition);
   console.log("here", file);
   console.log(city);
+  console.log(size);
+  console.log(color);
+  const token = Cookies.get("MyToken");
+  console.log(token);
   return (
     <section className="publishMain">
       <div className="divMain">
         <div className="titleH2">
           <h2>Vends ton article</h2>
         </div>
-        <form className="publish">
+        <form
+          className="publish"
+          onSubmit={async (event) => {
+            event.preventDefault();
+            const formData = new FormData();
+            formData.append("title", title);
+            formData.append("description", description);
+            formData.append("price", price);
+            formData.append("condition", condition);
+            formData.append("city", city);
+            formData.append("brand", brand);
+            formData.append("size", size);
+            formData.append("color", color);
+            formData.append("picture", file);
+            try {
+              const response = await axios.post(
+                "https://lereacteur-vinted-api.herokuapp.com/offer/publish",
+                formData,
+                {
+                  headers: {
+                    authorization: `Bearer ${token}`,
+                  },
+                }
+              );
+              alert(JSON.stringify(response.data));
+              navigate("/");
+            } catch (error) {
+              if (error.response.status === 500) {
+                console.error("An error occurred");
+              } else {
+                console.error(error.response.data.msg);
+              }
+            }
+          }}
+        >
           <section>
             <div className="addPicture">
               <input
@@ -86,11 +129,27 @@ const Publish = () => {
             </div>
             <div>
               <label htmlFor="taille">Taille</label>
-              <input type="text" placeholder="ex:L/40/12" id="taille" />
+              <input
+                type="text"
+                placeholder="ex:L/40/12"
+                id="taille"
+                value={size}
+                onChange={(event) => {
+                  setSize(event.target.value);
+                }}
+              />
             </div>
             <div>
               <label htmlFor="couleur">Couleur</label>
-              <input type="text" placeholder="ex:Fushia" id="couleur" />
+              <input
+                type="text"
+                placeholder="ex:Fushia"
+                id="couleur"
+                value={color}
+                onChange={(event) => {
+                  setColor(event.target.value);
+                }}
+              />
             </div>
             <div>
               <label htmlFor="etat">Etat</label>

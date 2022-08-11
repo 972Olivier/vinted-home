@@ -48,7 +48,7 @@ const Signup = () => {
             let recupToken = response.data.token;
             setToken(recupToken);
             console.log(token);
-            Cookies.set("token", recupToken, { expires: 4 });
+            Cookies.set("MyToken", recupToken, { expires: 4 });
             navigate("/");
           } catch (error) {
             console.log(error.response); // contrairement au error.message d'express
