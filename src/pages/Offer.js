@@ -2,11 +2,15 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import "./Offer.css";
+import { Link } from "react-router-dom";
+import Cookies from "js-cookie";
 
 const Offer = () => {
   const [data, setData] = useState();
   const [isLoading, setIsloading] = useState(true);
   const { id } = useParams();
+  let token = Cookies.get("MyToken");
+  // console.log(token);
 
   useEffect(() => {
     const fetchdata = async () => {
@@ -14,7 +18,7 @@ const Offer = () => {
         const response = await axios.get(
           `https://lereacteur-vinted-api.herokuapp.com/offer/${id}`
         );
-        // console.log(response.data);
+        console.log(response.data);
         setData(response.data);
         setIsloading(false);
       } catch (error) {
@@ -102,7 +106,21 @@ const Offer = () => {
 
               <p>{data.owner && data.owner.account.username}</p>
             </div>
-            <button>Acheter</button>
+            {token ? (
+              <Link
+                to="/payment"
+                state={{
+                  title: data.product_name,
+                  price: data.product_price,
+                }}
+              >
+                <button>Acheter</button>
+              </Link>
+            ) : (
+              <Link to="/login">
+                <button>Acheter</button>
+              </Link>
+            )}
           </div>
         </div>
       </div>

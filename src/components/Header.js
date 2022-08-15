@@ -16,7 +16,7 @@ const Header = ({
   setSort,
 }) => {
   // console.log(userConnect);
-  let article = "";
+  // let article = "";
   const navigate = useNavigate();
   return (
     <header>
@@ -25,10 +25,10 @@ const Header = ({
       </Link>
       <div className="search">
         <div
-          onClick={() => {
-            // alert("click");
-            setTitle(article);
-          }}
+          // onClick={() => {
+          //   // alert("click");
+          //   setTitle(article);
+          // }}
           className="loupe"
         >
           🔎
@@ -40,7 +40,7 @@ const Header = ({
           value={title}
           placeholder="Recherche des articles"
           onChange={(event) => {
-            article = event.target.value;
+            setTitle(event.target.value);
           }}
         />
         <div className="filterPrice">

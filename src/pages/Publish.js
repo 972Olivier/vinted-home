@@ -26,7 +26,7 @@ const Publish = () => {
   console.log(size);
   console.log(color);
   const token = Cookies.get("MyToken");
-  console.log(token);
+  // console.log(token);
   return (
     <section className="publishMain">
       <div className="divMain">
@@ -54,6 +54,7 @@ const Publish = () => {
                 {
                   headers: {
                     authorization: `Bearer ${token}`,
+                    "Content-Type": "multipart/form-data",
                   },
                 }
               );
